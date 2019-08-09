@@ -17,7 +17,7 @@ Generated JSON file will be located in `generated/`.
 
 In order to compare another file with a reference:
 ```
-python3 generate_ref.py -f generated/ts_136213v121300p.json -c samples/cpp_tbs.json
+python3 compare.py -f generated/ts_136213v121300p.json -c samples/cpp_tbs.json
 ```
 
 This will generated an html report in `generated/report.html` showing in which rows which columns are different.
