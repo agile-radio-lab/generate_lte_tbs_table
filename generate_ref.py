@@ -25,7 +25,7 @@ EXPECTED_LEN = LEN_CONTENT*LEN_HEADER_IDX_LEN
 tbi_result = {}
 
 for line in lines:
-    elements = line.split()
+    elements = line.strip().split()
     n_elements = len(elements) 
 
     if n_elements == LEN_CONTENT:
