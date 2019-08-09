@@ -30,13 +30,18 @@ def to_html(arr, is_correct):
     return res
 
 report_html = "<table style=\"text-align:left;\">"
+errors_cnt = 0
 for i, tbs_list in enumerate(comp_tbs_table):
     tbi = str(i)
     if tbi in ref_table:
         len_ref = len(ref_table[tbi])
         len_comp = len(tbs_list)
         if len_ref != len_comp:
+            report_html += "<tr><th colspan=\"%d\">TBI = %s, \
+                inconsistent length got %d, expected %d</th></tr>"\
+                    %(len_ref, tbi, len_comp, len_ref)
             print("Inconsistent length, tbi = %s"%tbi)
+            errors_cnt += 1
             continue
     
         compare = [ref_table[tbi][i] == tbs_list[i] for i in range(len_ref)]
@@ -45,9 +50,13 @@ for i, tbs_list in enumerate(comp_tbs_table):
             report_html += to_html(ref_table[tbi], compare)
             report_html += to_html(tbs_list, compare)
             print("Incorrect values found, tbi = %s"%tbi)
+            errors_cnt += 1
 report_html += "</table>"
 
-if not os.path.exists("generated"):
-    os.mkdir("generated")
-f = open(args.output, "w")
-f.write(report_html)
+print("%d error(s) found"%errors_cnt)
+if errors_cnt > 0:
+    print("Writting report to: %s"%args.output)
+    if not os.path.exists("generated"):
+        os.mkdir("generated")
+    f = open(args.output, "w")
+    f.write(report_html)
