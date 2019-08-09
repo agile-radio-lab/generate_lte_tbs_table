@@ -2,7 +2,7 @@
 This script parses a transport block size Table 7.1.7.2.1-1 from [3GPP TS 36.213](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=2427).
 
 ## Generator Input Format
-As input script accepts text copied directly from a PDF file, just from the begging of the table to the end. [Sample](samples/ts_136213v121300p.txt) is located in [samples](samples/).
+Script accepts as input a text copied directly from a PDF version of [3GPP TS 36.213](https://www.etsi.org/deliver/etsi_ts/136200_136299/136213/12.04.00_60/ts_136213v120400p.pdf), just from the begging of the Table 7.1.7.2.1-1 to the end of the table. [Sample text file](samples/ts_136213v121300p.txt) is located in [samples](samples/) folder. The script writes output to in JSON format to [generated](generated/) folder.
 
 ## Check Correctness
 The script [compare.py](compare.py) can be used to check correctness of a table stored in a json format. An [example](samples/cpp_tbs.json) is located in [samples](samples/).
