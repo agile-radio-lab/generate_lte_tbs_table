@@ -32,24 +32,24 @@ def to_html(arr, is_correct):
 report_html = "<table style=\"text-align:left;\">"
 errors_cnt = 0
 for i, tbs_list in enumerate(comp_tbs_table):
-    tbi = str(i)
-    if tbi in ref_table:
-        len_ref = len(ref_table[tbi])
+    i_tbs = str(i)
+    if i_tbs in ref_table:
+        len_ref = len(ref_table[i_tbs])
         len_comp = len(tbs_list)
         if len_ref != len_comp:
-            report_html += "<tr><th colspan=\"%d\">TBI = %s, \
+            report_html += "<tr><th colspan=\"%d\">I_TBS = %s, \
                 inconsistent length got %d, expected %d</th></tr>"\
-                    %(len_ref, tbi, len_comp, len_ref)
-            print("Inconsistent length, tbi = %s"%tbi)
+                    %(len_ref, i_tbs, len_comp, len_ref)
+            print("Inconsistent length, I_TBS = %s"%i_tbs)
             errors_cnt += 1
             continue
     
-        compare = [ref_table[tbi][i] == tbs_list[i] for i in range(len_ref)]
+        compare = [ref_table[i_tbs][i] == tbs_list[i] for i in range(len_ref)]
         if not all(compare):
-            report_html += "<tr><th colspan=\"%d\">TBI = %s</th></tr>"%(len_ref, tbi)
-            report_html += to_html(ref_table[tbi], compare)
+            report_html += "<tr><th colspan=\"%d\">I_TBS = %s</th></tr>"%(len_ref, i_tbs)
+            report_html += to_html(ref_table[i_tbs], compare)
             report_html += to_html(tbs_list, compare)
-            print("Incorrect values found, tbi = %s"%tbi)
+            print("Incorrect values found, I_TBS = %s"%i_tbs)
             errors_cnt += 1
 report_html += "</table>"
 

@@ -22,30 +22,30 @@ LEN_HEADER_IDX_LEN = 10
 LEN_CONTENT = 11
 EXPECTED_LEN = LEN_CONTENT*LEN_HEADER_IDX_LEN
 
-tbi_result = {}
+i_tbs_result = {}
 
 for line in lines:
     elements = line.strip().split()
     n_elements = len(elements) 
 
     if n_elements == LEN_CONTENT:
-        tbi = elements[0]
+        i_tbs = elements[0]
         tbs_list = list(map(int, elements[1:]))
-        if not tbi in tbi_result:
-            tbi_result[tbi] = []
-        tbi_result[tbi].extend(tbs_list)
+        if not i_tbs in i_tbs_result:
+            i_tbs_result[i_tbs] = []
+        i_tbs_result[i_tbs].extend(tbs_list)
     elif n_elements == LEN_HEADER_IDX_LEN:
         pass
 
 # check lengths
 all_correct = True
-for tbi in tbi_result:
-    if len(tbi_result[tbi]) != EXPECTED_LEN:
-        print("Wrong length on TBI = %s"%tbi)
+for i_tbs in i_tbs_result:
+    if len(i_tbs_result[i_tbs]) != EXPECTED_LEN:
+        print("Wrong length on I_TBS = %s"%i_tbs)
         all_correct = False
 if all_correct:
     print("Length checked: OK")
 
 if not os.path.exists("generated"):
     os.mkdir("generated")
-json.dump(tbi_result, open("generated/%s.json"%fname_base, "w"))
+json.dump(i_tbs_result, open("generated/%s.json"%fname_base, "w"))
