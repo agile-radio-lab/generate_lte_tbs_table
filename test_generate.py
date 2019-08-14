@@ -16,11 +16,11 @@ def generate(fname):
 class TestGeneration(unittest.TestCase):
 
     def test_v1212(self):
-        ref_table, check = generate("samples/ts_136213v121200p.txt")
+        _, check = generate("samples/ts_136213v121200p.txt")
         self.assertEqual(check, True, "Incorrect length")
 
     def test_v1213(self):
-        ref_table, check = generate("samples/ts_136213v121300p.txt")
+        _, check = generate("samples/ts_136213v121300p.txt")
         self.assertEqual(check, True, "Incorrect length")
 
 
