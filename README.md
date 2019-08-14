@@ -9,14 +9,14 @@ The script [compare.py](compare.py) can be used to check correctness of a table 
 
 ## Usage
 In order to generate reference JSON file for the TBS table:
-```
+```bash
 python3 generate_ref.py -f samples/ts_136213v121300p.txt
 ```
 
 Generated JSON file will be located in `generated/`.
 
 In order to compare another file with a reference:
-```
+```bash
 python3 compare.py -f generated/ts_136213v121300p.json -c samples/cpp_tbs.json
 ```
 
